@@ -1,0 +1,349 @@
+:root {
+    /* Anime-inspired color scheme */
+    --primary: #ff69b4; /* Sakura pink */
+    --secondary: #9b59b6; /* Purple */
+    --dark: #2c3e50; /* Dark blue */
+    --light: #ecf0f1; /* Light gray */
+    --gray: #bdc3c7; /* Medium gray */
+    --progress: #e74c3c; /* Red */
+    --bg-primary: #f5f6fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --accent: #3498db; /* Blue accent */
+}
+
+[data-theme="dark"] {
+    --primary: #ff69b4;
+    --secondary: #9b59b6;
+    --dark: #ecf0f1;
+    --light: #2c3e50;
+    --gray: #636e72;
+    --progress: #e74c3c;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ecf0f1;
+    --text-secondary: #bdc3c7;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --accent: #3498db;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Anime-style container */
+.container {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
+    backdrop-filter: blur(5px);
+}
+
+/* Sidebar with anime styling */
+.sidebar {
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 2px 0 10px var(--shadow);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    border-right: 2px solid var(--primary);
+}
+
+.sidebar h2 {
+    color: var(--primary);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 i {
+    font-size: 1.2rem;
+}
+
+/* Anime-style buttons */
+#addMusicBtn, .favorite-btn {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+#addMusicBtn:hover, .favorite-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Playlist items with anime styling */
+#playlist li {
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 105, 180, 0.2);
+}
+
+#playlist li:hover {
+    background: rgba(255, 105, 180, 0.1);
+    transform: translateX(5px);
+}
+
+#playlist li.active {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 30px;
+    overflow: auto;
+    position: relative;
+}
+
+#visualizer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+/* Now playing section with anime styling */
+.now-playing {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 15px var(--shadow);
+    max-width: 600px;
+    margin: auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    border: 2px solid var(--primary);
+}
+
+.now-playing h2 {
+    color: var(--primary);
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.8rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+#albumArt {
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.song-details {
+    flex-grow: 1;
+}
+
+#songTitle {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+#artistName {
+    font-size: 1.1rem;
+    color: #636e72;
+}
+
+/* Progress bar with anime styling */
+.progress-container {
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    height: 6px;
+    background-color: var(--gray);
+    border-radius: 3px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.time-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #636e72;
+}
+
+/* Controls with anime styling */
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#playBtn {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
+}
+
+.controls button:hover {
+    transform: scale(1.1);
+    color: var(--secondary);
+}
+
+#playBtn:hover {
+    background: linear-gradient(45deg, var(--secondary), var(--primary));
+    transform: scale(1.1);
+}
+
+/* Volume control with anime styling */
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+#volumeSlider {
+    width: 100px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    height: 4px;
+    background: var(--gray);
+    border-radius: 2px;
+}
+
+#volumeSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#volumeSlider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: var(--secondary);
+}
+
+/* Mini player with anime styling */
+.mini-player {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+}
+
+/* Sleep timer with anime styling */
+.sleep-timer {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+}
+
+.sleep-timer select {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Lyrics container with anime styling */
+.lyrics-container {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+}
+
+.lyrics-line.active {
+    color: var(--primary);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
+}
+
+/* Scrollbar with anime styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, var(--secondary), var(--primary));
+}
