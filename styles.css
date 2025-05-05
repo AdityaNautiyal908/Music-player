@@ -165,10 +165,11 @@ body {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     padding: 30px;
     overflow: auto;
     position: relative;
+    z-index: 1;
+    background: none;
 }
 
 #visualizer {
@@ -183,17 +184,23 @@ body {
 
 /* Now playing section with anime styling */
 .now-playing {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(3px);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 5px 15px var(--shadow);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: auto;
     width: 100%;
     position: relative;
     z-index: 2;
-    border: 2px solid var(--primary);
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    transition: all 0.3s ease;
+}
+
+.now-playing:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: var(--primary);
 }
 
 .now-playing h2 {
@@ -209,6 +216,10 @@ body {
     align-items: center;
     gap: 25px;
     margin-bottom: 30px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(2px);
 }
 
 #albumArt {
@@ -216,7 +227,8 @@ body {
     height: 180px;
     border-radius: 10px;
     object-fit: cover;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .song-details {
@@ -236,12 +248,16 @@ body {
 
 /* Progress bar with anime styling */
 .progress-container {
-    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(2px);
 }
 
 .progress-bar {
     height: 6px;
-    background-color: var(--gray);
+    background-color: rgba(255, 255, 255, 0.3);
     border-radius: 3px;
     margin-bottom: 10px;
     cursor: pointer;
@@ -260,7 +276,8 @@ body {
     display: flex;
     justify-content: space-between;
     font-size: 0.9rem;
-    color: #636e72;
+    color: var(--text-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Controls with anime styling */
@@ -269,11 +286,14 @@ body {
     justify-content: center;
     align-items: center;
     gap: 25px;
-    margin-top: 30px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(2px);
 }
 
 .controls button {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.4);
     border: none;
     font-size: 1.5rem;
     color: var(--primary);
@@ -299,7 +319,7 @@ body {
 
 .controls button:hover {
     transform: scale(1.1);
-    color: var(--secondary);
+    background: rgba(255, 255, 255, 0.6);
 }
 
 #playBtn:hover {
@@ -312,7 +332,10 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-left: 20px;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    backdrop-filter: blur(2px);
 }
 
 #volumeSlider {
@@ -320,7 +343,7 @@ body {
     cursor: pointer;
     -webkit-appearance: none;
     height: 4px;
-    background: var(--gray);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 2px;
 }
 
@@ -332,6 +355,7 @@ body {
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #volumeSlider::-webkit-slider-thumb:hover {
@@ -366,13 +390,19 @@ body {
 
 /* Lyrics container styling */
 .lyrics-container {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(3px);
-    border: 2px solid var(--primary);
+    border: 2px solid rgba(255, 105, 180, 0.3);
     border-radius: 15px;
     margin-top: 20px;
     padding: 15px;
     position: relative;
+    transition: all 0.3s ease;
+}
+
+.lyrics-container:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: var(--primary);
 }
 
 .lyrics-container h3 {
