@@ -44,18 +44,52 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Anime-style container */
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(1px);
+}
+
+/* Update container to work with video background */
 .container {
     display: flex;
     height: 100vh;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1) 0%, rgba(155, 89, 182, 0.1) 100%);
-    backdrop-filter: blur(5px);
+    position: relative;
+    z-index: 1;
 }
 
-/* Sidebar with anime styling */
+/* Update sidebar for better visibility over video */
 .sidebar {
     width: 300px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(3px);
     box-shadow: 2px 0 10px var(--shadow);
     padding: 20px;
     display: flex;
@@ -97,13 +131,21 @@ body {
 
 /* Playlist items with anime styling */
 #playlist li {
-    padding: 12px 15px;
+    padding: 15px;
     border-radius: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     cursor: pointer;
     transition: all 0.2s ease;
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 105, 180, 0.2);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#playlist li:first-child {
+    margin-top: 15px;
 }
 
 #playlist li:hover {
@@ -115,6 +157,7 @@ body {
     background: linear-gradient(45deg, var(--primary), var(--secondary));
     color: white;
     border: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Main Content Styles */
@@ -140,7 +183,8 @@ body {
 
 /* Now playing section with anime styling */
 .now-playing {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(3px);
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 5px 15px var(--shadow);
@@ -157,7 +201,7 @@ body {
     margin-bottom: 25px;
     text-align: center;
     font-size: 1.8rem;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .song-info {
@@ -229,7 +273,7 @@ body {
 }
 
 .controls button {
-    background: none;
+    background: rgba(255, 255, 255, 0.7);
     border: none;
     font-size: 1.5rem;
     color: var(--primary);
@@ -241,6 +285,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #playBtn {
@@ -249,6 +294,7 @@ body {
     font-size: 1.8rem;
     width: 60px;
     height: 60px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .controls button:hover {
@@ -295,14 +341,16 @@ body {
 
 /* Mini player with anime styling */
 .mini-player {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(3px);
     border: 2px solid var(--primary);
     border-radius: 15px;
 }
 
 /* Sleep timer with anime styling */
 .sleep-timer {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(3px);
     border: 2px solid var(--primary);
     border-radius: 15px;
 }
@@ -316,16 +364,42 @@ body {
     cursor: pointer;
 }
 
-/* Lyrics container with anime styling */
+/* Lyrics container styling */
 .lyrics-container {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(3px);
     border: 2px solid var(--primary);
     border-radius: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    position: relative;
+}
+
+.lyrics-container h3 {
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(255, 105, 180, 0.3);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+#lyrics {
+    text-align: center;
+    padding: 10px;
+}
+
+.lyrics-line {
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
 }
 
 .lyrics-line.active {
     color: var(--primary);
     font-weight: bold;
+    transform: scale(1.05);
     text-shadow: 0 0 5px rgba(255, 105, 180, 0.3);
 }
 
@@ -346,4 +420,45 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(45deg, var(--secondary), var(--primary));
+}
+
+/* Enhance text contrast for better readability with more transparent backgrounds */
+.song-info h3, 
+.song-info p,
+.now-playing h2,
+.lyrics-line,
+#playlist li {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    color: var(--text-primary);
+}
+
+/* Playlist Controls */
+.playlist-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+#addMusicBtn {
+    flex-grow: 1;
+    padding: 12px 20px;
+    margin-bottom: 0;
+}
+
+/* Playlist items spacing */
+#playlist {
+    list-style: none;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 5px;
+}
+
+/* Favorite button styling */
+.favorite-btn {
+    padding: 12px !important;
+    width: auto !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
