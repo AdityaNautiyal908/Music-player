@@ -492,3 +492,29 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+#onlineSearchInput {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#onlineSearchBtn {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#onlineSearchBtn:hover {
+    background: linear-gradient(45deg, var(--secondary), var(--primary));
+    transform: scale(1.05);
+}
+
+
+
